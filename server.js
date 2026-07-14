@@ -31,6 +31,11 @@ const openai = new OpenAI({
 
 const app = express();
 
+// Unauthenticated health check for Render (or any host) to poll — must stay
+// reachable with no password, or the platform's health probe gets a 401 and
+// never marks the service as live.
+app.get("/healthz", (req, res) => res.status(200).send("ok"));
+
 function requirePassword(req, res, next) {
   const configuredPassword = process.env.APP_PASSWORD;
   if (!configuredPassword) return next(); // no password set: open access (local dev default)
