@@ -1,0 +1,22 @@
+{
+  "name": "writing-tutor",
+  "version": "1.0.0",
+  "description": "AI writing tutor for UO WR121/WR122 essays, coaching against the department rubric.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mammoth": "^1.8.0",
+    "multer": "^2.2.0",
+    "openai": "^4.104.0",
+    "uuid": "^11.1.1"
+  }
+}

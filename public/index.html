@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WR121/122 Writing Tutor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Writing Tutor</h1>
+    <p class="subtitle">Rubric-based coaching for UO WR121 &amp; WR122 essays — asks questions, doesn't write it for you.</p>
+  </header>
+
+  <main>
+    <section id="intake" class="panel">
+      <h2>1. Bring in your draft</h2>
+
+      <div class="field-row">
+        <label for="courseLevel">Course</label>
+        <select id="courseLevel">
+          <option value="WR121">WR121 (essay based on a common reading)</option>
+          <option value="WR122">WR122 (research-based argument)</option>
+        </select>
+      </div>
+
+      <div class="tabs">
+        <button type="button" class="tab-btn active" data-tab="paste">Paste text</button>
+        <button type="button" class="tab-btn" data-tab="upload">Upload file (.txt / .docx)</button>
+      </div>
+
+      <div class="tab-panel" data-tab-panel="paste">
+        <label for="essayText" class="sr-only">Paste your essay text</label>
+        <textarea id="essayText" rows="14" placeholder="Paste your full essay draft here..."></textarea>
+      </div>
+
+      <div class="tab-panel hidden" data-tab-panel="upload">
+        <label for="essayFile">Choose a .txt or .docx file</label>
+        <input type="file" id="essayFile" accept=".txt,.docx" />
+        <p id="fileName" class="hint"></p>
+      </div>
+
+      <button id="analyzeBtn" class="primary-btn">Analyze my draft</button>
+      <p id="intakeError" class="error hidden"></p>
+      <p id="intakeStatus" class="hint hidden">Reading your draft against the rubric — this can take up to a minute...</p>
+    </section>
+
+    <section id="results" class="panel hidden">
+      <h2>2. Rubric feedback</h2>
+      <p class="disclaimer">This is formative coaching feedback, not your instructor's official grade.</p>
+
+      <div id="truncatedNotice" class="hint hidden">Your draft was long, so only the first portion was analyzed.</div>
+
+      <div class="overall">
+        <h3>Overall</h3>
+        <p id="overallImpression"></p>
+      </div>
+
+      <div id="traitList" class="trait-list"></div>
+
+      <div class="citation-review">
+        <h3>Citations &amp; source use</h3>
+        <p id="citationSummary"></p>
+        <ul id="citationIssues" class="citation-issues"></ul>
+      </div>
+
+      <div class="next-steps">
+        <h3>Where to focus first</h3>
+        <ol id="nextSteps"></ol>
+      </div>
+    </section>
+
+    <section id="chat" class="panel hidden">
+      <h2>3. Talk it through</h2>
+      <p class="hint">Ask the tutor about any part of the feedback. It will coach you with questions, not sentences to copy in.</p>
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <form id="chatForm" class="chat-form">
+        <label for="chatInput" class="sr-only">Your message</label>
+        <textarea id="chatInput" rows="2" placeholder="Ask a question about your essay or the feedback..."></textarea>
+        <button type="submit" class="primary-btn">Send</button>
+      </form>
+      <p id="chatError" class="error hidden"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
