@@ -25,7 +25,10 @@ if (!process.env.APP_PASSWORD) {
 }
 
 const openai = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
+  // Fall back to a placeholder so the SDK doesn't throw at startup when the
+  // key is missing — requests will fail with a clear 401 instead of the
+  // whole process crashing before it can even bind a port.
+  apiKey: process.env.GROQ_API_KEY || "not-configured",
   baseURL: "https://api.groq.com/openai/v1"
 });
 
